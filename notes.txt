@@ -1,0 +1,25 @@
+Introducing Hooks
+
+-allow you to use state and other react features without using class components
+
+-state cannot be used in a functional component without Hooks
+    -useState is a hook that allows you to use state in functional hook
+    -no need to use component did mount
+
+-useEffect() and useState() are common hooks to use
+
+-we had to use class components for the following reasons:
+    -to keep data in state
+    -to use lifecycle methods
+    -to pass props from classes to functional components
+
+-however!  with react hooks, we can do all of this without using classes!!  WOOT WOOT!
+
+
+first we will use class to create counter app:
+-use create-react-app <appname> in terminal in desired dir.
+-go to src folder in new app and remove all files you don't need: (everything but App.js and index.js)
+
+-to begin remove all references in App.js and index.js and we will write class component in the App.js
+for this exercise.
+
