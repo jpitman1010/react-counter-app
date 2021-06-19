@@ -11,16 +11,28 @@ const NewsApp = () => {
     //setting up a default of 'react' allows for it to populate results even if the user
     //doesn't type into search engine, that way page isn't blank.
 
-    const [url, setUrl] = useState(`http://hn.algolia.com/api/v1/search?query=react`);    
+    const [url, setUrl] = useState(`http://hn.algolia.com/api/v1/search?query=react`);   
+    
+    
+    const [loading, setLoading] = useState(false);
+    //setting up loading so that while it is loading it will show something on user side
+    //to indicate that it is loading results. 
 
     //fetch news from hackernews API
     const fetchNews = () => {
-      fetch(`http://hn.algolia.com/api/v1/search?query=${searchQuery}`)
-      //setting the template strings to insert searchQuery dynamically by embedding variable
-      .then(result => result.json()) //it returns a promise then you need to handle that promise using then
-      .then(data => setNews(data.hits)) //after turning object to JSON it returns another promise so must handle it again
-      .catch(error => console.log(error)); //then need to catch any errors
+        //set loading:
+        setLoading(true);
+
+        fetch(url)
+        //setting the template strings to insert searchQuery dynamically by embedding variable
+        .then(result => result.json()) //it returns a promise then you need to handle that promise using then
+        .then(data => (setNews(data.hits)), setLoading(false)) //after turning object to JSON it returns another promise so must handle it again
+        //add parameter to the second promise to reset loading to false so that once the data
+        //is loaded it stops showing the loading to user.
+        .catch(error => console.log(error)); //then need to catch any errors
     };
+
+
     useEffect(() => {
       fetchNews();
     }, [url]);
@@ -36,18 +48,19 @@ const NewsApp = () => {
     //the state
     const handleChange = (e) => {
         //take the event (e) and grab the target value 
-        setSearchQuery(e.target.value)
+        setSearchQuery(e.target.value);
     };
 
     const handleSubmit = e => {
-        e.preventDefault()
-        setUrl(`http://hn.algolia.com/api/v1/search?query=${searchQuery}`)
+        e.preventDefault();
+        setUrl(`http://hn.algolia.com/api/v1/search?query=${searchQuery}`);
         //this set's the url based on user input once they hit submit button
-    }
+    };
 
     return (
       <div>
         <h2>News</h2>
+        {loading ? <h2>News Loading...</h2> : ''}
         <form onSubmit={handleSubmit}>
             <input type="text" value={searchQuery} onChange={handleChange} />
             <button>Search</button>
