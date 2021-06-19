@@ -57,17 +57,24 @@ const NewsApp = () => {
         //this set's the url based on user input once they hit submit button
     };
 
-    return (
-      <div>
-        <h2>News</h2>
-        {loading ? <h2>News Loading...</h2> : ''}
+    const showLoading = () => (loading ? <h2>News Loading...</h2> : '');
+
+    const searchForm = () => (
         <form onSubmit={handleSubmit}>
             <input type="text" value={searchQuery} onChange={handleChange} />
             <button>Search</button>
         </form>
-        {/* //loop through the news, finding the index so we can map it to a key
-        //then returning the value in the p tags. */}
-        {news.map((n, i) => (<p key={i} >{n.title}</p>))}
+    );
+
+    const showNews = () => (news.map((n, i) => (<p key={i} >{n.title}</p>)));
+    
+    
+    return (
+      <div>
+        <h2>News</h2>
+        {showLoading()}
+        {searchForm()}
+        {showNews()}
       </div>
     )
   };
