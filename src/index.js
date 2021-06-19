@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import NewsApp from './NewsApp'
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<NewsApp />, document.getElementById('root'));

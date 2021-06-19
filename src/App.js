@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "tailwindcss/tailwind.css";
 
+
+
+
+
+
+
+
+
+
 //using componentDidMount and componentDidUpdate to show differences
 //between using this and next lesson: useEffect.  useEffect is cleaner, 
 //better code to use.
@@ -42,7 +51,6 @@ import "tailwindcss/tailwind.css";
 //     )};
 // }
 
-// export default App;
 
 
 
