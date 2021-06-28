@@ -15,14 +15,17 @@ class Counter extends Component {
         return    <ul> { this.state.tags.map(tag => <li key={tag}>{tag}</li>) }</ul>
     }
 
-    constructor() {
-        //need constructor function to bind the state to the function below.
-        super();
-        //must use super to bind the child element
-        this.handleIncrement = this.handleIncrement.bind(this);
-    }
+    // constructor() {
+    //     //need constructor function to bind the state to the function below.
+    //     super();
+    //     //must use super to bind the child element
+    //     this.handleIncrement = this.handleIncrement.bind(this);
+    // }
 
-    handleIncrement() {
+    //or you can bind by setting the function to an arrow function
+
+
+    handleIncrement = () => {
         console.log('increment click', this )
     }
   render() {    
