@@ -79,7 +79,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    document.title = `Clicked ${this.state.count} times.`
+    document.title = `Clicked ${count} times.`
   });
   //replaces componentDidMount and componentDidUpdate with only 1 method needing to be used.
 
@@ -100,6 +100,7 @@ const App = () => {
     </div>
 
   );
+
 };
 
 export default App;
