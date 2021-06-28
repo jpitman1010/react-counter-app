@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+ #dist/
+package-lock.json
+postcss.config.js
+src/Counter.js
+src/react-app-env.d.ts
+src/tailwind.css
+tailwind.config.js
+tailwind.css
+tsconfig.json
