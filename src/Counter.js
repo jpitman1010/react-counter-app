@@ -15,6 +15,16 @@ class Counter extends Component {
         return    <ul> { this.state.tags.map(tag => <li key={tag}>{tag}</li>) }</ul>
     }
 
+    constructor() {
+        //need constructor function to bind the state to the function below.
+        super();
+        //must use super to bind the child element
+        this.handleIncrement = this.handleIncrement.bind(this);
+    }
+
+    handleIncrement() {
+        console.log('increment click', this )
+    }
   render() {    
     return (
       <div>
@@ -24,6 +34,10 @@ class Counter extends Component {
         //as long as not empty string, it counts as truthy, same with numbers.  As long as number not 
         //0, it identifies as truthy.  Then it will return the statement to the right most side of the && */}
         { this.renderTags() }
+        <button 
+        onClick={this.handleIncrement}>
+            Increment
+        </button>
       </div>
   
     );
