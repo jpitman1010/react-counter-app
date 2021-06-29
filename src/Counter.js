@@ -25,10 +25,14 @@ class Counter extends Component {
     //or you can bind by setting the function to an arrow function
 
 
-    handleIncrement = () => {
-        console.log('increment click', this )
+    handleIncrement = num => {
+        console.log(num);
+        this.setState({ count: this.state.count + 1 })
     }
-  render() {    
+
+
+  render() {  
+    
     return (
       <div>
           {/* //can also render condition without method by using truthy falsy from &&  */}
@@ -37,15 +41,26 @@ class Counter extends Component {
         //as long as not empty string, it counts as truthy, same with numbers.  As long as number not 
         //0, it identifies as truthy.  Then it will return the statement to the right most side of the && */}
         { this.renderTags() }
-        <button 
-        onClick={this.handleIncrement}>
+        <span className={this.getBadgeClass()}>{this.formatCount()}</span>
+        <button className="btn btn-secondary btn-sm"
+        onClick={ ()  => this.handleIncrement(1) }>
             Increment
         </button>
       </div>
   
     );
     }      
-  
+
+    getBadgeClass() {
+        let classes = "badge m-2 badge-";
+        classes += this.state.count === 0 ? "warning" : "primary";
+        return classes;
+    }
+
+  formatCount() {
+      const { count } = this.state;
+      return count === 0 ? "Zero" : count;
+  }
    
 }
 
